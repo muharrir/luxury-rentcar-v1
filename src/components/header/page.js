@@ -13,17 +13,21 @@ function Header() {
   const pathname = usePathname();
 
   return (
-    <nav className="my-10 flex items-center justify-between  z-10">
+    <nav className="my-6 md:my-10 flex items-center justify-between  z-10">
       <Link href={"/"}>
-        <h1 className="font-bruno font-bold text-3xl cursor-pointer">LUXURY</h1>
+        <h1 className="font-bruno font-bold text-2xl md:text-3xl cursor-pointer">
+          LUXURY
+        </h1>
       </Link>
-      <ul className="flex gap-20 mt-3 ">
+      <ul className="hidden md:flex gap-20 mt-3 ">
         {navs.map((v, i) => (
           <li key={i}>
             <Link
               href={v.href}
               className={`hover:text-gray-400 ${
-                pathname == v.href ? "font-medium" : ""
+                pathname == v.href
+                  ? "font-medium"
+                  : "text-gray-400 hover:text-black"
               }`}
             >
               {v.text}
@@ -36,11 +40,32 @@ function Header() {
           </li>
         ))}
       </ul>
-      <div className="flex">
-        <button className="border border-gray-300 px-9 py-4 rounded-full  font-semibold hover:bg-indigo-950 hover:border-0 hover:text-white ">
+      <div
+        className={`${pathname == "/login" ? "hidden" : "hidden md:block"} `}
+      >
+        <Link
+          href={"/login"}
+          className="border border-gray-300 px-9 py-4 rounded-full  font-semibold hover:bg-indigo-950 hover:border-0 hover:text-white "
+        >
           Log In
-        </button>
+        </Link>
       </div>
+      <button className="block md:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 9h16.5m-16.5 6.75h16.5"
+          />
+        </svg>
+      </button>
     </nav>
   );
 }
