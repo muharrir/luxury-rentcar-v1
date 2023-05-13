@@ -13,7 +13,7 @@ function Header() {
   const pathname = usePathname();
 
   return (
-    <nav className="my-6 md:my-10 flex items-center justify-between  z-10">
+    <nav className="my-6 md:my-10 flex items-center justify-between z-10 mx-6 md:mx-10 lg:mx-40">
       <Link href={"/"}>
         <h1 className="font-bruno font-bold text-2xl md:text-3xl cursor-pointer">
           LUXURY
@@ -24,10 +24,10 @@ function Header() {
           <li key={i}>
             <Link
               href={v.href}
-              className={`hover:text-gray-400 ${
+              className={`hover:text-black ${
                 pathname == v.href
-                  ? "font-medium"
-                  : "text-gray-400 hover:text-black"
+                  ? "font-medium hover:text-gray-400"
+                  : "text-gray-400"
               }`}
             >
               {v.text}
