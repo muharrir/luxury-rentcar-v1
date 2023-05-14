@@ -5,7 +5,7 @@ function Login() {
   return (
     <>
       <section class="h-[80vh] md:flex mb-10">
-        <div class="rounded-tl-3xl rounded-bl-3xl relative overflow-hidden md:flex w-1/2 bg-gradient-to-br from-gray-200 via-gray-400 to-gray-600 justify-around items-center hidden">
+        <div class="rounded-tl-3xl rounded-bl-3xl relative overflow-hidden lg:flex w-1/2 bg-gradient-to-br from-gray-200 via-gray-400 to-gray-600 justify-around items-center hidden">
           <div>
             <h1 class="text-black font-bold text-4xl font-sans">
               LUXURY RENT CAR
@@ -19,7 +19,7 @@ function Login() {
           <div class="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
           <div class="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         </div>
-        <div class="rounded-tr-3xl rounded-br-3xl flex  md:w-1/2 justify-center py-10 items-center bg-slate-100">
+        <div class="h-[87vh] md:h-full rounded-tr-3xl rounded-br-3xl flex w-full lg:w-1/2 justify-center py-10 items-center bg-slate-100">
           <form class="bg-slate-100">
             <h1 class="text-gray-800 font-bold text-2xl mb-1">Login Page</h1>
             <p class="text-sm font-normal text-gray-600 mb-7">
