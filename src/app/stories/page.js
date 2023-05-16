@@ -1,4 +1,4 @@
-import Header from "@/components/header/page";
+import Header from "@/components/Header";
 import React from "react";
 
 function Stories() {

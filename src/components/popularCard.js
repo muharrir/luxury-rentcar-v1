@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Ferari from "public/ferari.jpg";
+import Ferari from "../../public/assets/images/ferari.jpg";
 
 function PopularCard() {
   return (
@@ -15,7 +15,7 @@ function PopularCard() {
       </div>
       <div className="mt-2">
         <h3 className="text-base font-bold text-blue-800">
-          Rp.800K
+          Rp.800.000
           <span className="text-gray-400 text-sm font-normal">/day</span>
         </h3>
       </div>
