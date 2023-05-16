@@ -1,4 +1,5 @@
-import EffectCircle from "@/components/effectCircle";
+import Button from "@/components/Button";
+import EffectCircle from "@/components/EffectCircle";
 import Link from "next/link";
 import React from "react";
 
@@ -35,9 +36,7 @@ export default function Register() {
 							</svg>
 							<input class="pl-2 outline-none border-none bg-slate-50 md:bg-slate-100" type="password" name="" id="" placeholder="Password" />
 						</div>
-						<button type="submit" class="block w-full bg-slate-700 hover:bg-slate-600 transition-all mt-4 py-2 rounded-2xl text-white font-semibold mb-2">
-							Register
-						</button>
+						<Button name="Register" />
 						<Link href={"/login"}>
 							<span class="text-sm ml-2 hover:text-slate-500 cursor-pointer">Already have an account? Click here</span>
 						</Link>
