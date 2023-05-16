@@ -75,15 +75,15 @@ function Login() {
             >
               Login
             </button>
-            <Link
-              href={"/register"}
-              class="text-sm ml-2 hover:text-slate-500 cursor-pointer"
-            >
+            <div class="pt-2 text-sm">
               Dont have an account?{" "}
-              <span className="cursor-pointer text-blue-600 font-semibold hover:underline underline-offset-2">
+              <Link
+                href={"/register"}
+                className="cursor-pointer text-blue-600 font-semibold hover:underline underline-offset-2"
+              >
                 Register here
-              </span>
-            </Link>
+              </Link>
+            </div>
           </form>
         </div>
       </section>
