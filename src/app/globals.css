@@ -4,3 +4,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.boxPayment input[type="radio"]:checked + label {
+		@apply shadow-primary;
+	}
+}
+
+@layer utilities {
+	.shadow-primary {
+		@apply shadow-[0_0_0_2px_#4743FB_inset];
+	}
+}
