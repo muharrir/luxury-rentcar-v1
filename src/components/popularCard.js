@@ -1,23 +1,25 @@
 import Image from "next/image";
 import React from "react";
-import Ferari from "../../public/assets/images/ferari.jpg";
+import Supra from "../../public/assets/images/supra2.jpg";
 import Link from "next/link";
 
-function PopularCard() {
+function PopularCard({ title, brand, img, price, href }) {
   return (
-    <Link href={"/ferrari"}>
-      <div className="bg-white rounded-2xl px-5 py-5">
-        <h3 className="text-lg font-bold">BMW 320</h3>
-        <p className="text-sm text-gray-400">Sport Car</p>
+    <Link href={href}>
+      <div className="bg-white rounded-2xl px-5 py-4">
+        <h3 className="text-lg font-bold">{title}</h3>
+        <p className="text-sm text-gray-400">{brand}</p>
         <div>
           <Image
-            src={Ferari}
-            className="mt-4 rounded-2xl object-cover min-h-[150px]"
+            src={img}
+            width={500}
+            height={500}
+            className="mt-4 rounded-2xl object-cover max-h-[180px]"
           />
         </div>
         <div className="mt-2">
           <h3 className="text-base font-bold text-blue-800">
-            Rp.800.000
+            Rp.{price}
             <span className="text-gray-400 text-sm font-normal">/day</span>
           </h3>
         </div>
