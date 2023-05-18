@@ -17,7 +17,7 @@ function Header() {
   };
 
   return (
-    <nav className="relative z-20 my-6 md:my-10 mx-6 md:mx-10 lg:mx-40">
+    <nav className="relative z-20 my-6 md:my-10 mx-6 md:mx-10 lg:mx-32">
       <div className="flex items-center justify-between">
         {/* LOGO */}
         <Link href={"/"}>
@@ -39,11 +39,11 @@ function Header() {
               >
                 {v.text}
               </Link>
-              <div
-                className={`${
-                  pathname == v.href ? "mt-2 h-1 w-7 bg-black rounded-full" : ""
-                }`}
-              ></div>
+              {pathname == v.href ? (
+                <div className="mt-2 h-1 w-7 bg-black rounded-full"></div>
+              ) : (
+                <div className="mt-2 h-1 w-7 bg-transparent"></div>
+              )}
             </li>
           ))}
         </ul>
