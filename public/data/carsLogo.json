@@ -1,0 +1,82 @@
+[
+	{
+		"id": 1,
+		"img": "/cars-logo/audi.png",
+		"name": "audi"
+	},
+	{
+		"id": 2,
+		"img": "/cars-logo/bmw.png",
+		"name": "bmw"
+	},
+	{
+		"id": 3,
+		"img": "/cars-logo/chevrolet.png",
+		"name": "chevrolet"
+	},
+	{
+		"id": 4,
+		"img": "/cars-logo/ferrari.png",
+		"name": "ferrari"
+	},
+	{
+		"id": 5,
+		"img": "/cars-logo/honda.png",
+		"name": "honda"
+	},
+	{
+		"id": 6,
+		"img": "/cars-logo/hyundai.png",
+		"name": "hyundai"
+	},
+	{
+		"id": 7,
+		"img": "/cars-logo/jaguar.png",
+		"name": "jaguar"
+	},
+	{
+		"id": 8,
+		"img": "/cars-logo/lamborghini.png",
+		"name": "lamborghini"
+	},
+	{
+		"id": 9,
+		"img": "/cars-logo/mazda.png",
+		"name": "mazda"
+	},
+	{
+		"id": 10,
+		"img": "/cars-logo/mercedes.png",
+		"name": "mercedes"
+	},
+	{
+		"id": 11,
+		"img": "/cars-logo/mitsubishi.png",
+		"name": "mitsubishi"
+	},
+	{
+		"id": 12,
+		"img": "/cars-logo/nissan.png",
+		"name": "nissan"
+	},
+	{
+		"id": 13,
+		"img": "/cars-logo/peugeot.png",
+		"name": "peugeot"
+	},
+	{
+		"id": 14,
+		"img": "/cars-logo/porsche.png",
+		"name": "porsche"
+	},
+	{
+		"id": 15,
+		"img": "/cars-logo/suzuki.png",
+		"name": "suzuki"
+	},
+	{
+		"id": 16,
+		"img": "/cars-logo/toyota.png",
+		"name": "toyota"
+	}
+]
