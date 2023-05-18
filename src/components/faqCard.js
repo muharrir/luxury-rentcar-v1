@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import IconDown from "../../public/assets/svgs/ic-down.svg";
 import IconUp from "../../public/assets/svgs/ic-up.svg";
@@ -12,14 +13,18 @@ function FaqCard() {
 
   return (
     <div
-      className={`rounded-3xl border border-gray-400 py-4 px-6 md:px-8 text-start cursor-pointer ${
+      className={`rounded-3xl border border-gray-400 py-4 px-6 md:px-10 text-start cursor-pointer ${
         tekan == false ? "h-min" : "h-auto"
       }`}
       onClick={showDropDown}
     >
       <div className="flex justify-between">
         <h1 className="font-semibold">What if I crash the car?</h1>
-        {tekan == true ? <Image src={IconUp} /> : <Image src={IconDown} />}
+        {tekan == true ? (
+          <Image src={IconDown} className="rotate-180" />
+        ) : (
+          <Image src={IconDown} />
+        )}
       </div>
       <div className={`${tekan == false ? "hidden" : "pt-4"}`}>
         <h2>

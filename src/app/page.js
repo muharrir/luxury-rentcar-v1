@@ -15,6 +15,41 @@ import Link from "next/link";
 import FaqCard from "@/components/faqCard";
 
 export default function Home() {
+  const popularCars = [
+    {
+      id: 1,
+      title: "Supra GR",
+      brand: "Toyota",
+      img: "/assets/images/supra1.jpg",
+      price: "800.000",
+      href: "/toyota/supra-gr",
+    },
+    {
+      id: 2,
+      title: "Supra GR 2",
+      brand: "Toyota",
+      img: "/assets/images/supra2.jpg",
+      price: "500.000",
+      href: "/toyota/supra-gr",
+    },
+    {
+      id: 3,
+      title: "Supra GR 3",
+      brand: "Toyota",
+      img: "/assets/images/supra3.jpg",
+      price: "1.00.000",
+      href: "/toyota/rush-gr",
+    },
+    {
+      id: 4,
+      title: "Ionic 5",
+      brand: "Hyundai",
+      img: "/assets/images/supra4.jpg",
+      price: "1.200.000",
+      href: "/toyota/rush-gr",
+    },
+  ];
+
   return (
     <>
       <div className="mx-4 md:mx-10 lg:mx-40">
@@ -139,7 +174,7 @@ export default function Home() {
       </div>
 
       {/* Popular Cars */}
-      <section className="py-10 lg:py-[100px] px-6 md:px-10 lg:px-28 bg-gray-200/70">
+      <section className="py-10 lg:py-[100px] px-6 md:px-10 lg:px-28 bg-darkGrey">
         {/* Title */}
         <div className="sm:space-y-1 md:space-y-2">
           <h2 className="text-2xl md:text-[26px] font-bold">Popular Cars</h2>
@@ -148,10 +183,16 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-rows-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-          <PopularCard />
-          <PopularCard />
-          <PopularCard />
-          <PopularCard />
+          {popularCars.map((v, i) => (
+            <PopularCard
+              title={v.title}
+              brand={v.brand}
+              img={v.img}
+              price={v.price}
+              href={v.href}
+              key={i}
+            />
+          ))}
         </div>
       </section>
 
