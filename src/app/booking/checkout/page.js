@@ -28,7 +28,7 @@ export default function Checkout() {
 				<div className="max-w-sm mx-auto md:mx-0 lg:bg-white rounded-2xl 2xl:p-10 2xl:max-w-lg">
 					<div className="w-full p-5 text-center">
 						<h1 className="text-gray-800 font-bold text-2xl mb-1">Checkout now!</h1>
-						<p className="text-sm lg:text-base font-normal text-gray-600 mt-3 mb-7">Choose your payment method and make payment</p>
+						<p className="text-sm lg:text-base font-normal text-gray-600 mt-3 mb-7 lg:mb-2">Choose your payment method and make payment</p>
 					</div>
 					{/* Checkout */}
 					<div className="w-full px-5 text-sm lg:text-base">
