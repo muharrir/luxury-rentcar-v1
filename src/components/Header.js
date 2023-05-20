@@ -8,6 +8,7 @@ function Header() {
     { text: "Home", href: "/" },
     { text: "Catalog", href: "/catalog" },
     { text: "Stories", href: "/stories" },
+    { text: "Maps", href: "/maps" },
   ];
 
   const pathname = usePathname();
@@ -16,8 +17,11 @@ function Header() {
     setClickHamburger(!clickHamburger);
   };
 
+  const getEmail = localStorage.getItem("emailData");
+  const getPassword = localStorage.getItem("passwordData");
+
   return (
-    <nav className="relative z-20 my-6 md:my-10 mx-6 md:mx-10 lg:mx-32">
+    <nav className="relative z-50 my-6 md:my-10 mx-6 md:mx-10 lg:mx-32">
       <div className="flex items-center justify-between">
         {/* LOGO */}
         <Link href={"/"}>
@@ -26,7 +30,7 @@ function Header() {
           </h1>
         </Link>
         {/* MENU ITEM */}
-        <ul className="hidden md:flex md:gap-10 lg:gap-20 mt-3 ">
+        <ul className="hidden md:flex md:gap-8 lg:gap-16 mt-3 ">
           {navs.map((v, i) => (
             <li key={i}>
               <Link
@@ -48,16 +52,25 @@ function Header() {
           ))}
         </ul>
         {/* LOGIN Button */}
-        <div
-          className={`${pathname == "/login" ? "hidden" : "hidden md:block"} `}
-        >
-          <Link
-            href={"/login"}
-            className="border border-gray-300 px-9 py-4 rounded-full  font-semibold hover:bg-indigo-950 hover:border-0 hover:text-white "
+        {getEmail && getPassword ? (
+          <div
+            className="w-10 h-10 rounded-full bg-blue-500"
+            onClick={funcClickHamburger}
+          ></div>
+        ) : (
+          <div
+            className={`${
+              pathname == "/login" ? "hidden" : "hidden md:block"
+            } `}
           >
-            Log In
-          </Link>
-        </div>
+            <Link
+              href={"/login"}
+              className="border border-gray-300 px-9 py-4 rounded-full  font-semibold hover:bg-indigo-950 hover:border-0 hover:text-white "
+            >
+              Log In
+            </Link>
+          </div>
+        )}
 
         {/* HAMBURGER BUTTON */}
         <button
@@ -68,13 +81,13 @@ function Header() {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="w-8 h-8"
+            className="w-8 h-8"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M3.75 9h16.5m-16.5 6.75h16.5"
             />
           </svg>
@@ -113,6 +126,17 @@ function Header() {
             </ul>
           </div>
         </div>
+
+        {/* Account Nav  */}
+        {/* <div className={`${clickHamburger == true ? "block" : "hidden"}`}>
+          <div className="absolute flex flex-col bg-gray-100 left-[85%] right-0 mt-10 rounded-2xl px-6 py-4">
+            <ul className="space-y-2">
+              <div>
+                <h3>Log Out</h3>
+              </div>
+            </ul>
+          </div>
+        </div> */}
       </div>
     </nav>
   );

@@ -5,24 +5,24 @@ import specData from "../../../data/specData.json";
 
 export const metadata = {
   title: {
-    absolute: "New Supra GR",
+    absolute: "New Corolla GR",
   },
   description: "This is a Details Page from Luxury Rent Car",
 };
 
-function SupraGR() {
+function CorollaGR() {
   return (
     <div className="bg-darkGrey mt-4 px-6 py-10 md:py-14 md:mt-12 md:px-10 lg:px-32  flex flex-col">
       <CardThumbnail
-        carousel={carousel.supra}
-        specData={specData.supra.spec}
-        brand={specData.supra.brand}
-        typeHeader={specData.supra.typeHeader}
-        typeCar={specData.supra.typeCar}
-        price={specData.supra.price}
+        carousel={carousel.corolla}
+        specData={specData.corolla.spec}
+        brand={specData.corolla.brand}
+        typeHeader={specData.corolla.typeHeader}
+        typeCar={specData.corolla.typeCar}
+        price={specData.corolla.price}
       />
     </div>
   );
 }
 
-export default SupraGR;
+export default CorollaGR;

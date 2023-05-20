@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import Supra from "../../public/assets/images/supra2.jpg";
 import Link from "next/link";
 
-function PopularCard({ title, brand, img, price, href }) {
+function PopularCard({ title, brand, img, price, href, alt }) {
   return (
     <Link href={href}>
       <div className="bg-white rounded-2xl px-5 py-4">
@@ -14,6 +13,7 @@ function PopularCard({ title, brand, img, price, href }) {
             src={img}
             width={500}
             height={500}
+            alt={alt}
             className="mt-4 rounded-2xl object-cover max-h-[180px]"
           />
         </div>

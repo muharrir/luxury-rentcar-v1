@@ -5,7 +5,7 @@ function IconCard({ image, title, subtitle }) {
   return (
     <div className="flex items-center gap-4">
       <div className="w-16 h-16 bg-indigo-950 rounded-3xl justify-center items-center flex">
-        <Image src={image} />
+        <Image src={image} alt="Icon" />
       </div>
       <div>
         <h1 className="text-lg font-bold">{title}</h1>

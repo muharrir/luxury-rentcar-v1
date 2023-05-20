@@ -21,9 +21,9 @@ function FaqCard() {
       <div className="flex justify-between">
         <h1 className="font-semibold">What if I crash the car?</h1>
         {tekan == true ? (
-          <Image src={IconDown} className="rotate-180" />
+          <Image src={IconDown} className="rotate-180" alt="Icon Up" />
         ) : (
-          <Image src={IconDown} />
+          <Image src={IconDown} alt="Icon Down" />
         )}
       </div>
       <div className={`${tekan == false ? "hidden" : "pt-4"}`}>
