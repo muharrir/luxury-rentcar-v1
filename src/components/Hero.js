@@ -114,9 +114,9 @@ function Hero() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ ease: "easeOut", duration: 0.8, delay: 5 }}
           >
-            <button className="bg-blue-500 rounded-full font-semibold text-white ml-2 px-10 py-3 shadow-xl shadow-blue-500/50 md:px-14 md:py-4 text-xs md:text-base">
-              Rent Now
-            </button>
+            <div className="bg-blue-500  rounded-full font-semibold text-white ml-2 px-10 py-3 cursor-pointer shadow-xl shadow-blue-500/50 md:px-14 md:py-4 text-xs md:text-base hover:scale-105">
+              <button>Rent Now</button>
+            </div>
           </motion.div>
         </div>
       </div>
