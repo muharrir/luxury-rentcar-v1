@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import IconSettings from "./IconSettings";
 import IconDeposits from "./IconDeposits";
@@ -9,6 +9,7 @@ import IconPayment from "./IconPayment";
 
 export default function Menu() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const sidenavs = [
     {
@@ -37,19 +38,25 @@ export default function Menu() {
     },
   ];
   return (
-    <ul className="mt-12 space-y-8">
+    <ul className="flex justify-between w-full lg:flex-col lg:mt-12 lg:space-x-0 lg:space-y-8">
       {sidenavs.map((v, i) => (
         <li key={i}>
           <Link
             href={v.href}
-            className={`flex items-center gap-4 ${
+            className={`flex items-center gap-4  ${
               pathname == v.href
-                ? "text-indigo-950 font-semibold fill-blue-500"
+                ? "text-indigo-950 font-semibold fill-blue-500 "
                 : "text-gray-400 fill-gray-400/80"
             }`}
           >
-            {v.image}
-            <h3>{v.text}</h3>
+            <div
+              className={`${
+                pathname == v.href ? "animate-bounce" : "animate-none"
+              }`}
+            >
+              {v.image}
+            </div>
+            <h3 className="hidden lg:block">{v.text}</h3>
           </Link>
         </li>
       ))}
