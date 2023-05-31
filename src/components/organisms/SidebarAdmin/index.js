@@ -33,7 +33,7 @@ function SidebarAdmin() {
     <motion.div
       variants={sidebarAnimation}
       animate={isClick ? "open" : "close"}
-      className="pt-5 w-[16rem] max-w-[16rem] h-screen bg-[#222831] shadow-[5px_0_20px_0_rgba(0,0,0,0.4)] px-2 overflow-hidden z-50 fixed md:relative"
+      className="pt-5 w-[16rem] max-w-[16rem] h-full bg-[#222831] shadow-[5px_0_20px_0_rgba(0,0,0,0.4)] px-2 overflow-hidden z-50 fixed"
     >
       {/* CARD ITEM */}
       <div>
@@ -85,7 +85,7 @@ function SidebarAdmin() {
           </div>
 
           {/* SUB ITEM */}
-          {open && (
+          {isClick && (
             <div className={`mt-4 ${isOpen ? "hidden" : "px-6 text-white "}`}>
               <Link href={"/admin/data-cars"}>
                 <h3 className="cursor-pointer">Input Cars Data</h3>

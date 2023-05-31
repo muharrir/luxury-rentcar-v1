@@ -9,7 +9,7 @@ export const metadata = {
 
 function Catalog() {
   return (
-    <div className="mx-32 mt-20 grid grid-cols-4">
+    <div className="mx-32 mt-20 grid grid-cols-4 gap-10">
       {recommenCar.toyota.map((v, i) => (
         <PopularCard
           title={v.title}

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React from "react";
 import IconSettings from "./IconSettings";
 import IconDeposits from "./IconDeposits";
@@ -9,7 +9,6 @@ import IconPayment from "./IconPayment";
 
 export default function Menu() {
   const pathname = usePathname();
-  const router = useRouter();
 
   const sidenavs = [
     {

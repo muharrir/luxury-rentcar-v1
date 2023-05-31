@@ -7,7 +7,7 @@ export const metadata = {
 
 function AdminLayout({ children }) {
   return (
-    <div className="bg-[#393E46] h-screen flex">
+    <div className="flex flex-col">
       <SidebarAdmin />
       {children}
     </div>

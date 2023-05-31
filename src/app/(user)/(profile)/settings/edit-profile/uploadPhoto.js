@@ -21,13 +21,13 @@ export default function UploadPhoto({ onChange, img }) {
             width={800}
             height={800}
             alt="ic-upload"
-            className="w-24 h-24 rounded-full"
+            className="w-20 h-20 rounded-full"
           />
         </div>
       )}
       <input
         type="file"
-        accept="image/jpg, image/png, image/jpeg"
+        accept="image/*"
         className="mt-4"
         onChange={onChange}
       />

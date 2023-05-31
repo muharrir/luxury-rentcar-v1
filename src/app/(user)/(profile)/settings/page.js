@@ -30,7 +30,7 @@ function Settings() {
             My Profile
           </h1>
           <p className="mt-2 text-gray-400">Customize your profile</p>
-          <Link href={"settings/edit_profile"}>
+          <Link href={"settings/edit-profile"}>
             <button className="w-full mt-5 bg-zinc-300 text-indigo-950 font-bold py-3 rounded-full">
               Edit Now
             </button>
