@@ -1,8 +1,8 @@
 import React from "react";
 import Hamburger from "./Hamburger";
 import ProfileMenu from "./ProfileMenu";
-import Menu from "./Menu";
 import Logo from "./Logo";
+import MenuDesktop from "./MenuDesktop";
 
 export default function Navbar() {
   return (
@@ -10,7 +10,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between">
         <Hamburger />
         <Logo />
-        <Menu />
+        <MenuDesktop />
         <ProfileMenu />
       </div>
     </nav>
