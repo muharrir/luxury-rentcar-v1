@@ -40,6 +40,7 @@ function SidebarAdmin() {
 				</Link>
 				{/* ITEM LIST */}
 				<div className="transition-all duration-500">
+					{/* BLUE MENU */}
 					<div className="mt-10 flex items-center justify-between bg-[#0092CA] rounded-md py-2 px-[9px] cursor-pointer select-none" onClick={handleClickItem}>
 						{/* MENU ITEM */}
 						<div className="flex gap-4 items-center">
@@ -59,6 +60,9 @@ function SidebarAdmin() {
 							</Link>
 							<Link href={"/admin/cars-data"}>
 								<h3 className="cursor-pointer mb-5">Data Cars</h3>
+							</Link>
+							<Link href={"/admin/brands-data"}>
+								<h3 className="cursor-pointer mb-5">Data Brands</h3>
 							</Link>
 							<Link href={"/admin/transaction"}>
 								<h3 className="cursor-pointer mb-5">Data Transaction</h3>
