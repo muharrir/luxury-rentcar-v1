@@ -1,8 +1,9 @@
+import Cookies from "js-cookie";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
-function MenuProfile() {
+function MenuProfile({ logout }) {
   const menuProfile = [
     { id: 1, text: "Transaction", href: "/transaction" },
     { id: 2, text: "Deposits", href: "/deposits" },
@@ -10,14 +11,17 @@ function MenuProfile() {
     { id: 4, text: "Settings", href: "/settings" },
   ];
 
+  const route = useRouter();
+
   const handleClick = () => {
-    localStorage.clear();
-    window.location = "/";
+    Cookies.remove("token");
+    logout();
+    route.push("/");
   };
 
   const pathname = usePathname();
   return (
-    <div className="space-y-2 md:space-y-3 text-gray-400 ">
+    <div className="space-y-2 md:space-y-3 text-gray-400 px-2">
       {menuProfile.map((v, i) => (
         <div key={i}>
           <Link href={v.href}>
@@ -41,21 +45,3 @@ function MenuProfile() {
 }
 
 export default MenuProfile;
-
-{
-  /* <Link href={"/profile"}>
-        <h3 className="hover:text-black">Profile</h3>
-      </Link>
-      <Link href={"/profile"}>
-        <h3 className="hover:text-black">Transaction</h3>
-      </Link>
-      <Link href={"/profile"}>
-        <h3 className="hover:text-black">Rewards</h3>
-      </Link>
-      <Link href={"/settings"}>
-        <h3 className="hover:text-black">Settings</h3>
-      </Link>
-      <h3 className="hover:text-black" onClick={handleClick}>
-        Log Out
-      </h3> */
-}

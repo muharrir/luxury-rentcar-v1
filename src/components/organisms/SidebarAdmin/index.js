@@ -6,28 +6,28 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 function SidebarAdmin() {
-	const [isClick, setIsClick] = useState(true);
+  const [isClick, setIsClick] = useState(true);
 
-	//   state for sub MENU
-	const [isOpen, setIsOpen] = useState(true);
-	const handleClickItem = () => {
-		setIsOpen(!isOpen);
-	};
+  //   state for sub MENU
+  const [isOpen, setIsOpen] = useState(true);
+  const handleClickItem = () => {
+    setIsOpen(!isOpen);
+  };
 
-	const sidebarAnimation = {
-		open: {
-			width: "16rem",
-			transition: {
-				damping: 40,
-			},
-		},
-		close: {
-			width: "4rem",
-			transition: {
-				damping: 40,
-			},
-		},
-	};
+  const sidebarAnimation = {
+    open: {
+      width: "16rem",
+      transition: {
+        damping: 40,
+      },
+    },
+    close: {
+      width: "4rem",
+      transition: {
+        damping: 40,
+      },
+    },
+  };
 
 	return (
 		<motion.div variants={sidebarAnimation} animate={isClick ? "open" : "close"} className="pt-5 w-[16rem] max-w-[16rem] h-full bg-[#222831] shadow-[5px_0_20px_0_rgba(0,0,0,0.4)] px-2 overflow-hidden z-50 fixed">
@@ -72,28 +72,34 @@ function SidebarAdmin() {
 				</div>
 			</div>
 
-			{/* Controller */}
-			<motion.div
-				className="absolute bottom-5 right-2 cursor-pointer"
-				onClick={() => setIsClick(!isClick)}
-				animate={
-					isClick
-						? {
-								x: 0,
-								y: 0,
-								rotate: 0,
-						  }
-						: {
-								x: -10,
-								y: 0,
-								rotate: 180,
-						  }
-				}
-			>
-				<Image src={"/assets/svgs/ic-chevron.svg"} width={24} height={24} alt="ic_left" />
-			</motion.div>
-		</motion.div>
-	);
+        {/* Controller */}
+        <motion.div
+          className="absolute bottom-5 right-2 cursor-pointer"
+          onClick={() => setIsClick(!isClick)}
+          animate={
+            isClick
+              ? {
+                  x: 0,
+                  y: 0,
+                  rotate: 0,
+                }
+              : {
+                  x: -10,
+                  y: 0,
+                  rotate: 180,
+                }
+          }
+        >
+          <Image
+            src={"/assets/svgs/ic-chevron.svg"}
+            width={24}
+            height={24}
+            alt="ic_left"
+          />
+        </motion.div>
+      </motion.div>
+    </div>
+  );
 }
 
 export default SidebarAdmin;

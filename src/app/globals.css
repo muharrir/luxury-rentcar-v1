@@ -6,52 +6,52 @@
 @tailwind utilities;
 
 @layer components {
-	.boxPayment input[type="radio"]:checked + label {
-		@apply shadow-primary;
-	}
+  .boxPayment input[type="radio"]:checked + label {
+    @apply shadow-primary;
+  }
 }
 
 @layer utilities {
-	.shadow-primary {
-		@apply shadow-[0_0_0_2px_#4743FB_inset];
-	}
+  .shadow-primary {
+    @apply shadow-[0_0_0_2px_#4743FB_inset];
+  }
 }
 
 :root {
-	--primary: @apply bg-transparent;
-	--secondary: #3b82f6;
+  --primary: @apply bg-transparent;
+  --secondary: #1e1b4b;
 }
 
 /* Firefox Scroll Customize */
 * {
-	scrollbar-width: thin;
-	scrollbar-color: var(--secondary) var(--primary);
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
 }
 
 /* Chrome, Edge. Safari Scroll Customize */
 *::-webkit-scrollbar {
-	width: 10px;
+  width: 10px;
 }
 
 *::-webkit-scrollbar-track {
-	background: var(--primary);
-	border-radius: 5px;
+  background: var(--primary);
+  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: var(--secondary);
-	border-radius: 20px;
-	border: 3px solid var(--primary);
+  background-color: var(--secondary);
+  border-radius: 20px;
+  border: 3px solid var(--primary);
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 input[type="number"] {
-	-moz-appearance: textfield;
+  -moz-appearance: textfield;
 }

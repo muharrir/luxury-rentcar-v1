@@ -36,6 +36,12 @@ export default function Menu() {
       href: "/settings",
     },
   ];
+
+  const isActiveMenus = (href) => {
+    // const parseCompareHref = `/${pathname.split("/")[1]}`;
+    // const parseCompareHref = pathname.indexOf(href) >= 0
+    return pathname.indexOf(href) >= 0;
+  };
   return (
     <ul className="flex justify-between w-full lg:flex-col lg:mt-12 lg:space-x-0 lg:space-y-8">
       {sidenavs.map((v, i) => (
@@ -43,14 +49,14 @@ export default function Menu() {
           <Link
             href={v.href}
             className={`flex items-center gap-4  ${
-              pathname == v.href
+              isActiveMenus(v.href)
                 ? "text-indigo-950 font-semibold fill-blue-500 "
                 : "text-gray-400 fill-gray-400/80"
             }`}
           >
             <div
               className={`${
-                pathname == v.href ? "animate-bounce" : "animate-none"
+                isActiveMenus(v.href) ? "animate-bounce" : "animate-none"
               }`}
             >
               {v.image}

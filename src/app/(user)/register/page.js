@@ -1,43 +1,216 @@
-import Button from "@/components/Button";
-import LeftSide from "@/components/LeftSide";
+"use client";
+import FormInput from "@/components/atoms/FormInput";
+import IconEmail from "@/components/atoms/Forms/IconEmail";
+import IconPassword from "@/components/atoms/Forms/IconPassword";
+import IconUsername from "@/components/atoms/Forms/IconUsername";
+import axios from "axios";
+import { useFormik } from "formik";
+import Lottie from "lottie-react";
+import success from "../../../../public/assets/lottie/success.json";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import * as Yup from "yup";
 
 export default function Register() {
-	return (
-		<section class="h-[calc(100vh-5rem)] md:h-[calc(100vh-7.3rem)] md:flex">
-			<LeftSide />
-			<div class="h-full w-full flex justify-center items-center bg-slate-100 lg:w-1/2">
-				<form class="bg-slate-100">
-					<h1 class="text-gray-800 font-bold text-2xl mb-1">Register Account</h1>
-					<p class="text-sm font-normal text-gray-600 mb-7">Complete the form below to register</p>
-					<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-							<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-						</svg>
-						<input class="pl-2 outline-none border-none bg-slate-100" type="text" name="" id="" placeholder="Name" />
-					</div>
-					<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-						</svg>
-						<input class="pl-2 outline-none border-none bg-slate-100" type="text" name="" id="" placeholder="Email Address" />
-					</div>
-					<div class="flex items-center border-2 py-2 px-3 rounded-2xl">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-							<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-						</svg>
-						<input class="pl-2 outline-none border-none bg-slate-100" type="password" name="" id="" placeholder="Password" />
-					</div>
-					<Button name="Register" />
-					<div class="pt-2 text-sm">
-						Already have an account?{" "}
-						<Link href={"/login"} className="cursor-pointer text-blue-600 font-semibold hover:underline underline-offset-2">
-							Login here
-						</Link>
-					</div>
-				</form>
-			</div>
-		</section>
-	);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      fullname: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Username is required").min(3).max(15),
+      fullname: Yup.string().required("Fullname is required").min(3),
+      email: Yup.string()
+        .required("Email is required")
+        .email("Invalid Email Address"),
+      password: Yup.string()
+        .required("Password is required")
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+          "Must Contain 8 Characters, 1 Uppercase, 1 Lowercase, 1 Number and 1 Special Case Character"
+        ),
+    }),
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        await axios.post("http://localhost:4000/api/register", values);
+        setRegistrationSuccess(true);
+        formik.resetForm();
+      } catch (error) {
+        console.log(error);
+        setRegistrationSuccess(true);
+      }
+      setSubmitting(false);
+    },
+  });
+
+  return (
+    <section class="my-14 md:flex items-center justify-center relative">
+      <div class="flex justify-center items-center">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="md:w-[500px] bg-darkGrey md:px-16 md:py-16 rounded-2xl mx-6 p-6"
+        >
+          <div className="mb-8">
+            <h1 className="text-indigo-950 font-bold text-4xl">Register</h1>
+            <p className="text-sm font-normal text-gray-400 mt-2">
+              Complete the form below to register your account
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <FormInput
+              clx={
+                formik.errors.username
+                  ? "focus:outline-red-500 border-red-500 text-red-500"
+                  : "focus:outline-blue-500 valid:border-green-500"
+              }
+              icon={<IconUsername />}
+              name="username"
+              type="text"
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              placeholder="Username"
+              errorMessage={
+                formik.touched.username && formik.errors.username
+                  ? formik.errors.username
+                  : null
+              }
+              onBlur={formik.handleBlur}
+            />
+
+            <FormInput
+              clx={
+                formik.errors.fullname
+                  ? "focus:outline-red-500 border-red-500 text-red-500"
+                  : "focus:outline-blue-500 valid:border-green-500"
+              }
+              icon={<IconUsername />}
+              name="fullname"
+              type="text"
+              value={formik.values.fullname}
+              onChange={formik.handleChange}
+              placeholder="Full Name"
+              errorMessage={
+                formik.touched.fullname && formik.errors.fullname
+                  ? formik.errors.fullname
+                  : null
+              }
+              onBlur={formik.handleBlur}
+            />
+
+            <FormInput
+              clx={
+                formik.errors.email
+                  ? "focus:outline-red-500 border-red-500 text-red-500"
+                  : "focus:outline-blue-500 valid:border-green-500"
+              }
+              icon={<IconEmail />}
+              name="email"
+              type="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              placeholder="Email Address"
+              errorMessage={
+                formik.touched.email && formik.errors.email
+                  ? formik.errors.email
+                  : null
+              }
+              onBlur={formik.handleBlur}
+            />
+
+            <FormInput
+              clx={
+                formik.errors.password
+                  ? "focus:outline-red-500 border-red-500 text-red-500"
+                  : "focus:outline-blue-500 valid:border-green-500"
+              }
+              icon={<IconPassword />}
+              password={true}
+              name="password"
+              type="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              placeholder="Password"
+              errorMessage={
+                formik.touched.password && formik.errors.password
+                  ? formik.errors.password
+                  : null
+              }
+              onBlur={formik.handleBlur}
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={formik.isSubmitting}
+            className="block w-full bg-indigo-950 hover:scale-105 transition-all mt-4 py-3 rounded-2xl text-white font-semibold"
+          >
+            Register
+          </button>
+          <div class="mt-4 text-sm">
+            Already have an account?{" "}
+            <Link
+              href={"/login"}
+              className="cursor-pointer text-blue-600 font-semibold hover:underline underline-offset-2"
+            >
+              Login
+            </Link>
+          </div>
+        </form>
+      </div>
+
+      {/* Register Success */}
+      <div
+        className={`fixed z-10 inset-0 overflow-y-auto ${
+          registrationSuccess ? "block" : "hidden"
+        }`}
+      >
+        <div className="bg-black/50 flex items-center justify-center  min-h-screen">
+          <div className="bg-darkGrey rounded-2xl text-center w-[500px] h-[600px]">
+            <div className="mt-10 w-full flex items-center justify-center h-1/2">
+              <Lottie animationData={success} loop={true} className="w-1/2 " />
+            </div>
+            <h2 className="text-2xl font-bold my-4">
+              Registration Successful!
+            </h2>
+            <p className="text-gray-400">
+              Thank you for registering. <br /> Login first to access your
+              account!
+            </p>
+            <Link href={"/login"}>
+              <button className="bg-blue-500 text-white font-bold py-3 rounded-full w-52 mt-6">
+                Login
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Register Failed */}
+      {/* <div
+        className={`fixed z-10 inset-0 overflow-y-auto ${
+          registrationFailed ? "block" : "hidden"
+        }`}
+      >
+        <div className="bg-black/50 flex items-center justify-center  min-h-screen">
+          <div className="bg-darkGrey rounded-2xl text-center w-[500px] h-[600px]">
+            <div className="mt-10 w-full flex items-center justify-center h-1/2">
+              <Lottie animationData={success} loop={true} className="w-1/2 " />
+            </div>
+            <h2 className="text-2xl font-bold my-4">Registration Failed!</h2>
+            <p className="text-gray-400">Ooops something looks wrong</p>
+            <Link href={"/login"}>
+              <button className="bg-blue-500 text-white font-bold py-3 rounded-full w-52 mt-6">
+                Close
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div> */}
+    </section>
+  );
 }

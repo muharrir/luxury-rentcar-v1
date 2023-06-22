@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function DetailsSpec() {
   return (
@@ -74,7 +75,9 @@ export default function DetailsSpec() {
         transition={{ ease: "easeOut", duration: 0.8, delay: 5 }}
       >
         <div className="bg-blue-500  rounded-full font-semibold text-white ml-2 px-10 py-3 cursor-pointer shadow-xl shadow-blue-500/50 md:px-14 md:py-4 text-xs md:text-base hover:scale-105">
-          <button>Rent Now</button>
+          <button>
+            <Link href={"/catalog"}>Rent Now</Link>
+          </button>
         </div>
       </motion.div>
     </div>

@@ -18,7 +18,7 @@ export default function Hamburger() {
 
   return (
     <>
-      <div className="z-20 md:hidden">
+      <div className="z-20 md:hidden w-full">
         <button
           ref={ref}
           className="block md:hidden left-0"

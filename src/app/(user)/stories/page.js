@@ -20,14 +20,14 @@ function Stories() {
         <br />
         <p>
           At Luxury, we understand that each customer has unique needs and
-          preferences when it comes to renting a car. That's why we offer a wide
-          selection of vehicles to cater to a variety of requirements. Whether
-          you're looking for a compact car for city driving, a spacious SUV for
-          a family vacation, an elegant sedan for a business trip, or a
-          specialty vehicle for a special occasion, we have the perfect option
-          for you. Our well-maintained and up-to-date fleet ensures that you'll
-          always find a reliable and comfortable vehicle that suits your style
-          and budget.
+          preferences when it comes to renting a car. That&apos;s why we offer a
+          wide selection of vehicles to cater to a variety of requirements.
+          Whether you&apos;re looking for a compact car for city driving, a
+          spacious SUV for a family vacation, an elegant sedan for a business
+          trip, or a specialty vehicle for a special occasion, we have the
+          perfect option for you. Our well-maintained and up-to-date fleet
+          ensures that you&apos;ll always find a reliable and comfortable
+          vehicle that suits your style and budget.
         </p>
         <br />
         <p>
@@ -36,7 +36,7 @@ function Stories() {
           and duration needs. We understand that affordability is important, and
           we strive to provide value for your money without compromising on the
           quality of our service or vehicles. With us, you can be confident that
-          you're getting a great deal and excellent service every time you
+          you&apos;re getting a great deal and excellent service every time you
           choose Luxury.
         </p>
         <br />
@@ -51,11 +51,11 @@ function Stories() {
         <br />
         <p>
           At Luxury, we take pride in being your trusted travel companion.
-          Whether you're embarking on a business trip, going on a vacation, or
-          simply need a temporary car, we are here to meet your transportation
-          needs with professionalism, integrity, and a commitment to excellence.
-          Choose Luxury for a seamless and enjoyable car rental experience, and
-          let us be a part of your journey.
+          Whether you&apos;re embarking on a business trip, going on a vacation,
+          or simply need a temporary car, we are here to meet your
+          transportation needs with professionalism, integrity, and a commitment
+          to excellence. Choose Luxury for a seamless and enjoyable car rental
+          experience, and let us be a part of your journey.
         </p>
       </div>
     </>
