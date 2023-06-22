@@ -1,0 +1,28 @@
+{
+	"brands": [
+		{
+			"id": 1,
+			"name": "Toyota"
+		},
+		{
+			"id": 2,
+			"name": "Mazda"
+		},
+		{
+			"id": 3,
+			"name": "Honda"
+		},
+		{
+			"id": 4,
+			"name": "Nissan"
+		},
+		{
+			"id": 5,
+			"name": "Porsche"
+		},
+		{
+			"id": 6,
+			"name": "Mercedes"
+		}
+	]
+}
