@@ -1,65 +1,184 @@
 "use client";
 import Link from "next/link";
-import React, { useRef } from "react";
-import Home from "../page";
-import { redirect } from "next/navigation";
-import LeftSide from "@/components/LeftSide";
+import React, { useState } from "react";
+import axios from "axios";
+import FormInput from "@/components/atoms/FormInput";
+import IconEmail from "@/components/atoms/Forms/IconEmail";
+import IconPassword from "@/components/atoms/Forms/IconPassword";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Lottie from "lottie-react";
+import rubik from "../../../../public/assets/lottie/rubik.json";
+import error from "../../../../public/assets/lottie/error.json";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export const metadata = {
-	title: "Login",
-	description: "This is a Home Page from Luxury Rent Car",
+  title: "Login",
+  description: "This is a Home Page from Luxury Rent Car",
 };
 
 function Login() {
-	const email = useRef();
-	const password = useRef();
-	const getEmail = localStorage.getItem("emailData");
-	const getPassword = localStorage.getItem("passwordData");
-	const handleSumbit = () => {
-		if (email.current.value == "test1@gmail.com" && password.current.value == "12345") {
-			localStorage.setItem("emailData", "test1@gmail.com");
-			localStorage.setItem("passwordData", "12345");
-		}
-	};
+  const [isLoading, setIsLoading] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
-	return (
-		<>
-			{getEmail && getPassword ? (
-				redirect("/")
-			) : (
-				<section class="h-[calc(100vh-5rem)] md:h-[calc(100vh-7.3rem)] md:flex">
-					<LeftSide />
-					<div class="h-full w-full flex justify-center items-center bg-slate-100 lg:w-1/2">
-						<form onSubmit={handleSumbit} class="bg-slate-100">
-							<h1 class="text-gray-800 font-bold text-2xl mb-1">Login Page</h1>
-							<p class="text-sm font-normal text-gray-600 mb-7">Login to make car orders easily and quickly</p>
-							<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-								</svg>
-								<input class="pl-2 outline-none border-none bg-slate-100" type="text" placeholder="Email Address" ref={email} />
-							</div>
-							<div class="flex items-center border-2 py-2 px-3 rounded-2xl">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-									<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-								</svg>
-								<input class="pl-2 outline-none border-none bg-slate-100" type="password" placeholder="Password" ref={password} />
-							</div>
-							<button type="submit" class="block w-full bg-slate-700 hover:bg-slate-600 transition-all mt-4 py-2 rounded-2xl text-white font-semibold mb-2">
-								Login
-							</button>
-							<div class="pt-2 text-sm">
-								Dont have an account?{" "}
-								<Link href={"/register"} className="cursor-pointer text-blue-600 font-semibold hover:underline underline-offset-2">
-									Register here
-								</Link>
-							</div>
-						</form>
-					</div>
-				</section>
-			)}
-		</>
-	);
+  const route = useRouter();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .required("Email is required")
+        .email("Invalid Email Address"),
+      password: Yup.string().required("Password is required"),
+    }),
+    onSubmit: async (values, { setSubmitting }) => {
+      setIsLoading(true);
+
+      try {
+        const res = await axios.post("http://localhost:4000/api/login", values);
+        console.log(res);
+        if (res.data.message === "sukses") {
+          const token = res.data.token;
+          Cookies.set("token", token);
+          // window.location = "/";
+          route.push("/");
+        } else {
+          console.log("Login failed");
+          setShowErrorModal(true);
+          setIsLoading(false);
+        }
+
+        formik.resetForm();
+      } catch (error) {
+        setShowErrorModal(true);
+
+        setIsLoading(false);
+      }
+      setSubmitting(false);
+    },
+  });
+
+  const handleCloseErrorModal = () => {
+    setShowErrorModal(false);
+  };
+
+  return (
+    <section className="my-28 md:flex items-center justify-center">
+      <div className="flex justify-center items-center">
+        <div
+          className={`fixed z-10 inset-0 overflow-y-auto ${
+            isLoading ? "block" : "hidden"
+          }`}
+        >
+          <div className="bg-black/80  flex items-center justify-center  min-h-screen">
+            <Lottie animationData={rubik} loop={true} className="w-80 h-80 " />
+          </div>
+        </div>
+
+        <form
+          onSubmit={formik.handleSubmit}
+          className="md:w-[500px] bg-darkGrey w-full md:px-16 md:py-16 rounded-2xl mx-6 p-6"
+        >
+          <div className="mb-8">
+            <h1 className="text-indigo-950 font-bold text-4xl">Login</h1>
+            <p className="text-sm font-normal text-gray-400 mt-2">
+              Login to make car orders easily and quickly
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <FormInput
+              clx={
+                formik.errors.email
+                  ? "focus:outline-red-500 border-red-500 text-red-500"
+                  : "focus:outline-blue-500 valid:border-green-500"
+              }
+              icon={<IconEmail />}
+              name="email"
+              type="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              placeholder="Email Address"
+              errorMessage={
+                formik.touched.email && formik.errors.email
+                  ? formik.errors.email
+                  : null
+              }
+              onBlur={formik.handleBlur}
+            />
+
+            <FormInput
+              clx={
+                formik.errors.password
+                  ? "focus:outline-red-500 border-red-500 text-red-500"
+                  : "focus:outline-blue-500 valid:border-green-500"
+              }
+              icon={<IconPassword />}
+              password={true}
+              name="password"
+              type="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              placeholder="Password"
+              errorMessage={
+                formik.touched.password && formik.errors.password
+                  ? formik.errors.password
+                  : null
+              }
+              onBlur={formik.handleBlur}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="block w-full bg-indigo-950 hover:scale-105 transition-all mt-4 py-3 rounded-2xl text-white font-semibold"
+          >
+            Login
+          </button>
+          <div className="mt-4 text-sm">
+            Dont have an account?{" "}
+            <Link
+              href={"/register"}
+              className="cursor-pointer text-blue-600 font-semibold hover:underline underline-offset-2"
+            >
+              Register
+            </Link>
+          </div>
+        </form>
+
+        {/* Error Modal */}
+        {showErrorModal && (
+          <div className="fixed z-10 inset-0 overflow-y-auto">
+            <div className="bg-black/50 flex items-center justify-center  min-h-screen">
+              <div className="bg-darkGrey rounded-2xl text-center w-[500px] h-[600px]">
+                <div className="mt-10 w-full flex items-center justify-center h-1/2">
+                  <Lottie
+                    animationData={error}
+                    loop={true}
+                    className="w-1/2 "
+                  />
+                </div>
+                <h2 className="text-2xl font-bold my-4">Login Failed!</h2>
+                <p className="text-gray-400">
+                  Invalid email or password. <br /> Please try again.
+                </p>
+                <button
+                  className="bg-red-500 text-white font-bold py-3 rounded-full w-52 mt-6"
+                  onClick={handleCloseErrorModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
 }
-
+0;
 export default Login;

@@ -23,7 +23,7 @@ function Rewards() {
           alt="icon_gift"
         />
         <h4 className="text-indigo-950 text-lg">
-          You don't have any rewards :(
+          You don&apos;t have any rewards :(
         </h4>
       </div>
     </div>

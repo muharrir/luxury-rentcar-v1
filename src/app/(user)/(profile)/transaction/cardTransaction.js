@@ -32,7 +32,7 @@ export default function CardTransaction() {
   return (
     <div className="grid grid-rows-1 gap-5 mt-10 lg:grid-cols-2 lg:mt-[78px] ">
       {data.map((v, i) => (
-        <div className="flex w-full bg-darkGrey rounded-2xl p-3">
+        <div className="flex w-full bg-darkGrey rounded-2xl p-3" key={i.id}>
           <div className="flex w-full">
             {/* Image */}
             <div className="max-w-[40%] h-[100px] lg:h-[110px] rounded-2xl">
@@ -64,7 +64,7 @@ export default function CardTransaction() {
 
           <div>
             <h1
-              className={`w-[53px] lg:w-[63px] px-1 py-2 rounded-lg font-bold uppercase text-center text-[10px] lg:text-xs ${
+              className={`w-[53px] lg:w-[63px] ml-1 px-1 py-2 rounded-lg font-bold uppercase text-center text-[10px] lg:text-xs ${
                 v.status == "success"
                   ? "bg-green-500 text-green-900"
                   : v.status == "pending"

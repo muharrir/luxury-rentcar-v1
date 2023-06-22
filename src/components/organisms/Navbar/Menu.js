@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Menu() {
   const navs = [
@@ -11,8 +11,16 @@ export default function Menu() {
     { text: "Maps", href: "/maps" },
   ];
 
-  const getEmail = localStorage.getItem("emailData");
-  const getPassword = localStorage.getItem("passwordData");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const token = window.localStorage.getItem("token");
+      setIsLoggedIn(!!token);
+    };
+
+    checkLoginStatus();
+  }, []);
 
   const pathname = usePathname();
   return (
@@ -37,7 +45,7 @@ export default function Menu() {
           )}
         </li>
       ))}
-      {getEmail && getPassword ? (
+      {isLoggedIn ? (
         <></>
       ) : (
         <div className="md:hidden">
